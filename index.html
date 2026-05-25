@@ -1,0 +1,24 @@
+<label for="praga">Qual praga está atacando sua plantação?</label>
+<select id="praga">
+  <option value="pulgao">Pulgão</option>
+  <option value="lagarta">Lagarta</option>
+</select>
+
+<button onclick="calcularSimulador()">Ver Receita Sustentável</button>
+
+<div id="resultado"></div>
+
+<script>
+function calcularSimulador() {
+  // Pega a praga escolhida pelo usuário
+  let praga = document.getElementById("praga").value;
+  let resultado = document.getElementById("resultado");
+  
+  // Lógica que decide a receita
+  if (praga === "pulgao") {
+    resultado.innerHTML = "<h3>Solução: Calda de Sabão</h3><p>Misture 10g de sabão de coco neutro em 1 litro de água morna. Borrife no final da tarde.</p>";
+  } else if (praga === "lagarta") {
+    resultado.innerHTML = "<h3>Solução: Infusão de Pimenta</h3><p>Bata 50g de pimenta em 1 litro de água. Coe e borrife para repelir as lagartas.</p>";
+  }
+}
+</script>
