@@ -1,13 +1,37 @@
 /* ==========================================
    AGRINHO 2026 - ESTILO DO SIMULADOR (style.css)
    Tema: Agro Forte, Futuro Sustentável
+   Versão 2.0 - Design Moderno com Modo Escuro
    ========================================== */
+
+/* Variáveis CSS para Temas */
+:root {
+    --cor-primaria: #2e7d32;
+    --cor-primaria-escura: #1b5e20;
+    --cor-fundo: #f3f7f2;
+    --cor-fundo-container: #ffffff;
+    --cor-texto: #2c3e50;
+    --cor-texto-claro: #666666;
+    --cor-borda: #c8e6c9;
+    --cor-sucesso: #81c784;
+    --cor-sombra: rgba(46, 125, 50, 0.1);
+    --transicao: all 0.3s ease;
+}
+
+body.dark-mode {
+    --cor-fundo: #1a1a1a;
+    --cor-fundo-container: #2d2d2d;
+    --cor-texto: #e0e0e0;
+    --cor-texto-claro: #b0b0b0;
+    --cor-borda: #4a7c4e;
+    --cor-sombra: rgba(0, 0, 0, 0.3);
+}
 
 /* Configuração Geral da Página */
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f3f7f2; /* Verde bem clarinho, passa ideia de limpeza e eco */
-    color: #2c3e50; /* Cinza escuro para melhor leitura que o preto puro */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     margin: 0;
     padding: 40px 20px;
     display: flex;
@@ -16,18 +40,79 @@ body {
     justify-content: center;
     min-height: 100vh;
     box-sizing: border-box;
+    transition: var(--transicao);
 }
 
 /* Caixa Principal do Simulador */
 .container {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
-    background: #ffffff;
-    padding: 35px;
+    background: var(--cor-fundo-container);
+    padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.08); /* Sombra leve esverdeada */
-    border-top: 10px solid #2e7d32; /* Barra verde escura (identidade do Agrinho) */
+    box-shadow: 0 10px 30px var(--cor-sombra);
+    border-top: 8px solid var(--cor-primaria);
     box-sizing: border-box;
+    transition: var(--transicao);
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--cor-primaria);
+    margin: 0 0 8px 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.subtitulo {
+    color: var(--cor-texto-claro);
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    font-style: italic;
+}
+
+.tagline {
+    color: var(--cor-primaria-escura);
+    font-size: 13px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Botão de Toggle Modo Escuro */
+.toggle-dark {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--cor-sombra);
+    transition: var(--transicao);
+    z-index: 100;
+}
+
+.toggle-dark:hover {
+    background: var(--cor-primaria-escura);
+    transform: scale(1.1);
+}
+
+/* Seção Formulário */
+.formulario {
+    margin-bottom: 30px;
+}
+
+.campo-busca {
+    margin-bottom: 25px;
 }
 
 /* Títulos e Textos */
@@ -58,34 +143,45 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
-    color: #2e7d32;
+    color: var(--cor-primaria);
     font-size: 15px;
 }
 
 select {
     width: 100%;
     padding: 14px;
-    border: 2px solid #c8e6c9; /* Borda verde clara */
+    border: 2px solid var(--cor-borda);
     border-radius: 8px;
-    background-color: #fafdfa;
+    background-color: var(--cor-fundo-container);
     font-size: 16px;
-    color: #333333;
+    color: var(--cor-texto);
     outline: none;
-    transition: all 0.3s ease; /* Efeito suave ao clicar */
+    transition: var(--transicao);
     cursor: pointer;
+    box-sizing: border-box;
 }
 
-/* Quando o usuário clica no campo de seleção */
 select:focus {
-    border-color: #2e7d32;
-    background-color: #ffffff;
+    border-color: var(--cor-primaria);
     box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.15);
 }
 
+/* Descrição da Praga */
+.descricao-praga {
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    background: var(--cor-fundo);
+    font-size: 13px;
+    color: var(--cor-texto-claro);
+    border-left: 4px solid var(--cor-primaria);
+    display: none;
+}
+
 /* Botão de Simulação */
-button {
+.btn-calcular {
     width: 100%;
-    background-color: #2e7d32;
+    background-color: var(--cor-primaria);
     color: #ffffff;
     padding: 16px;
     border: none;
@@ -95,67 +191,130 @@ button {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+    transition: var(--transicao);
+    box-shadow: 0 4px 12px var(--cor-sombra);
 }
 
-/* Efeitos do Botão (Passar o mouse e Clicar) */
-button:hover {
-    background-color: #1b5e20; /* Escurece o verde */
+.btn-calcular:hover {
+    background-color: var(--cor-primaria-escura);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--cor-sombra);
 }
 
-button:active {
-    transform: scale(0.98); /* Efeito de afundar de leve ao clicar */
+.btn-calcular:active {
+    transform: translateY(0);
 }
 
-/* Painel de Resultado (Aparece via JavaScript) */
-#resultado {
+/* Painel de Resultado */
+.resultado {
     margin-top: 30px;
     padding: 25px;
     border-radius: 8px;
-    background-color: #f1f8e9; /* Fundo verde bem suave */
-    border-left: 6px solid #81c784; /* Detalhe lateral */
-    display: none; /* Começa escondido */
-    animation: surgimentoSuave 0.4s ease-out; /* Efeito visual ao aparecer */
+    background-color: var(--cor-fundo);
+    border-left: 6px solid var(--cor-sucesso);
+    display: none;
+    animation: surgimentoSuave 0.4s ease-out;
+    transition: var(--transicao);
 }
 
-#resultado h3 {
+.resultado h3 {
     margin-top: 0;
-    color: #1b5e20;
+    color: var(--cor-primaria);
     font-size: 20px;
     margin-bottom: 15px;
 }
 
-#resultado p {
+.resultado p {
     line-height: 1.6;
     font-size: 15px;
     margin-bottom: 10px;
+    color: var(--cor-texto);
 }
 
-/* Caixa interna dos ingredientes */
 .ingredientes {
-    background: #ffffff;
+    background: var(--cor-fundo-container);
     padding: 15px;
     border-radius: 6px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--cor-borda);
     margin-bottom: 15px;
-    font-family: monospace; /* Estilo que lembra receita/laboratório */
+    font-family: 'Courier New', monospace;
     font-size: 14px;
-    color: #455a64;
+    color: var(--cor-texto-claro);
     line-height: 1.8;
 }
 
-/* Rodapé de créditos/fontes */
-.fonte {
-    font-size: 11px;
-    color: #999999;
-    margin-top: 20px;
-    text-align: right;
-    border-top: 1px dashed #c8e6c9;
-    padding-top: 10px;
+/* Seção de Dicas */
+.dicas-gerais {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--cor-borda) 0%, var(--cor-fundo) 100%);
+    border-left: 6px solid var(--cor-primaria);
 }
 
-/* Animação para a resposta não aparecer travada na tela */
+.dicas-gerais h3 {
+    margin-top: 0;
+    color: var(--cor-primaria);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.dicas-gerais ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dicas-gerais li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--cor-texto);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.dicas-gerais li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--cor-sucesso);
+    font-weight: bold;
+}
+
+/* Rodapé */
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--cor-borda);
+    text-align: center;
+    color: var(--cor-texto-claro);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 13px;
+/* Rodapé */
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--cor-borda);
+    text-align: center;
+    color: var(--cor-texto-claro);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.creditos {
+    font-size: 12px;
+    color: var(--cor-primaria) !important;
+    font-style: italic;
+}
+
+/* Animações */
 @keyframes surgimentoSuave {
     from {
         opacity: 0;
@@ -164,5 +323,52 @@ button:active {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsividade para Tablets */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        max-width: 100%;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+    
+    .toggle-dark {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    header h1 {
+        font-size: 20px;
+    }
+    
+    .toggle-dark {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .btn-calcular {
+        padding: 14px;
+        font-size: 14px;
     }
 }

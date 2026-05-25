@@ -1,24 +1,70 @@
-<label for="praga">Qual praga está atacando sua plantação?</label>
-<select id="praga">
-  <option value="pulgao">Pulgão</option>
-  <option value="lagarta">Lagarta</option>
-</select>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - Simulador de Defensivos Naturais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🌱 Agrinho 2026</h1>
+            <p class="subtitulo">Simulador de Defensivos Naturais</p>
+            <p class="tagline">Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+        </header>
 
-<button onclick="calcularSimulador()">Ver Receita Sustentável</button>
+        <!-- Toggle Modo Escuro -->
+        <button class="toggle-dark" onclick="toggleDarkMode()" title="Alternar modo escuro">
+            🌙
+        </button>
 
-<div id="resultado"></div>
+        <!-- Formulário Principal -->
+        <section class="formulario">
+            <div class="campo-busca">
+                <label for="praga">Qual praga ou problema você identificou?</label>
+                <select id="praga" onchange="mostrarDescricao()">
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="pulgao">Pulgão</option>
+                    <option value="lagarta">Lagarta</option>
+                    <option value="acaros">Ácaros</option>
+                    <option value="cochonilha">Cochonilha</option>
+                    <option value="mosca-branca">Mosca-branca</option>
+                    <option value="oídio">Oídio (Fungo)</option>
+                    <option value="ferrugem">Ferrugem</option>
+                    <option value="antracnose">Antracnose</option>
+                </select>
+                <div id="descricao-praga" class="descricao-praga"></div>
+            </div>
 
-<script>
-function calcularSimulador() {
-  // Pega a praga escolhida pelo usuário
-  let praga = document.getElementById("praga").value;
-  let resultado = document.getElementById("resultado");
-  
-  // Lógica que decide a receita
-  if (praga === "pulgao") {
-    resultado.innerHTML = "<h3>Solução: Calda de Sabão</h3><p>Misture 10g de sabão de coco neutro em 1 litro de água morna. Borrife no final da tarde.</p>";
-  } else if (praga === "lagarta") {
-    resultado.innerHTML = "<h3>Solução: Infusão de Pimenta</h3><p>Bata 50g de pimenta em 1 litro de água. Coe e borrife para repelir as lagartas.</p>";
-  }
-}
-</script>
+            <button onclick="calcularSimulador()" class="btn-calcular">
+                ✓ Ver Receita Sustentável
+            </button>
+        </section>
+
+        <!-- Resultado -->
+        <div id="resultado" class="resultado"></div>
+
+        <!-- Dicas Gerais -->
+        <section class="dicas-gerais">
+            <h3>💡 Dicas Importantes</h3>
+            <ul>
+                <li><strong>Melhor horário:</strong> Borrife ao final da tarde ou início da manhã, evitando horas muito quentes</li>
+                <li><strong>Frequência:</strong> Repita a aplicação a cada 7-10 dias conforme necessário</li>
+                <li><strong>Teste:</strong> Sempre teste em pequena área antes de aplicar em toda a plantação</li>
+                <li><strong>Segurança:</strong> Use luvas e evite inalar os defensivos durante aplicação</li>
+                <li><strong>Alternância:</strong> Alterne entre defensivos diferentes para evitar resistência de pragas</li>
+            </ul>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <p>© 2026 Agrinho - Defensivos Naturais para Agricultura Sustentável</p>
+            <p class="creditos">Desenvolvido com 💚 para agricultores e produtores rurais</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
